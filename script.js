@@ -1,5 +1,6 @@
 const display = document.getElementById("display");
 const question = document.getElementById("question");
+// console.log(question)
 const startBtn = document.getElementById("start");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
@@ -22,6 +23,7 @@ fetch("./texts.json")
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
   const newLetter = e.key;
+  // console.log(newLetter.length)
 
   // Handle backspace press
   if (newLetter == "Backspace") {
@@ -41,11 +43,13 @@ const typeController = (e) => {
   userText += newLetter;
 
   const newLetterCorrect = validate(newLetter);
+  // const newLetterWrong = validate(newLetter);
+  console.log(newLetterCorrect.length)
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
-    display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : {errorCount}}</span>`;
   }
 
   // check if given question text is equal to user typed text
@@ -58,7 +62,7 @@ const validate = (key) => {
   if (key === questionText[userText.length - 1]) {
     return true;
   }
-  return false;
+    return false;
 };
 
 // FINISHED TYPING
@@ -86,6 +90,8 @@ const gameOver = () => {
   `;
 
   addHistory(questionText, timeTaken, errorCount);
+  // console.log(questionText)
+  console.log(errorCount)
 
   // restart everything
   startTime = null;
