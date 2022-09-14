@@ -192,3 +192,14 @@ button {
 }
 
 
+ /* Desktop screen mode */
+ @media only screen and (min-width: 992px) {
+  #histories{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .card {
+    flex-direction: column;
+  }
+}
