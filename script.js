@@ -92,8 +92,7 @@ const gameOver = () => {
   `;
 
   addHistory(questionText, timeTaken, errorCount);
-  // console.log(questionText)
-  console.log(errorCount)
+
 
   // restart everything
   startTime = null;
@@ -129,6 +128,7 @@ const start = () => {
     }
     count--;
   }, 1000);
+  countdownOverlay.innerHTML = '';
   
 };
 
